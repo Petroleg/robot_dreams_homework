@@ -5,4 +5,4 @@ def exponentiation(number, power_to_raise):
     :param power_to_raise: int
     :return: int
     """
-    return number**power_to_raise
+    return number ** power_to_raise
