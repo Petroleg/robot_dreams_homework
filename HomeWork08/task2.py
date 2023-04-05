@@ -15,3 +15,6 @@ def symmetric_difference_function_by_hand(set_a: set, set_b: set) -> set:
 
 def symmetric_difference_oneline(set_a: set, set_b: set) -> set:
     return set_a - set_b | set_b - set_a
+
+def symmetric_difference_oneline_more(set_a: set, set_b: set) -> set:
+    return set_a ^ set_b
