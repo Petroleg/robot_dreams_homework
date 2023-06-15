@@ -1,0 +1,3 @@
+SELECT p.id, p.date, u.first_name, u.last_name
+FROM purchases p
+JOIN users u ON p.user_id = u.id;
