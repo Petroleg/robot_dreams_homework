@@ -1,0 +1,31 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT,
+    last_name TEXT,
+    age INTEGER
+);
+
+CREATE TABLE publishing_houses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    rating INTEGER DEFAULT 5
+);
+
+CREATE TABLE books (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    author TEXT,
+    year INTEGER,
+    price INTEGER,
+    publishing_house_id INTEGER,
+    FOREIGN KEY (publishing_house_id) REFERENCES publishing_houses(id)
+);
+
+CREATE TABLE purchases (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    book_id INTEGER,
+    date TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (book_id) REFERENCES books(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

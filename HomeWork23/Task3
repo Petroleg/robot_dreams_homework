@@ -1,0 +1,5 @@
+SELECT u.id, u.first_name, u.last_name, b.title
+FROM users u
+JOIN purchases p ON u.id = p.user_id
+JOIN books b on p.book_id = b.id
+ORDER BY u.id;
