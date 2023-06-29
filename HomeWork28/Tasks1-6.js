@@ -50,8 +50,8 @@ window.addEventListener('DOMContentLoaded', function() {
     let td1 = document.createElement('td');
     let td2 = document.createElement('td');
 
-    td1.textContent = 'RUS ні';
-    td2.textContent = 'PEACE да';
+    td1.textContent = 'Слава';
+    td2.textContent = 'Україні';
 
     newRow.appendChild(td1);
     newRow.appendChild(td2);
