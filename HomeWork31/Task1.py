@@ -1,6 +1,6 @@
 import requests
 import random
-
+from urllib.parse import urlparse
 
 def choose_website():
     websites = [
@@ -16,7 +16,7 @@ def choose_website():
 def website_info(url):
     response = requests.get(url)
     status_code = response.status_code
-    site = url.split('//')[-1].split('/')[0]
+    site = urlparse(url).netloc
     html_length = len(response.text)
     print(f'Site: {site}')
     print(f'Response status code: {status_code}')
