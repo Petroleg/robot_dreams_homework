@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Books{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<ul id="lists">
+    {% for book in random_books %}
+    <li>{{ book }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
