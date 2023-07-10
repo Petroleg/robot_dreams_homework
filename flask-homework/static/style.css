@@ -1,0 +1,14 @@
+/*I understand how to cope with css styles in templates, but I have no idea of what styles to apply, have this thing))))*/
+#users {
+    text-align: center;
+    color: blue;
+}
+
+.login {
+    margin-top: 20px;
+}
+
+#lists {
+    list-style-type: circle;
+    color: crimson;
+}
