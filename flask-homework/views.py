@@ -27,6 +27,7 @@ def get_users():
     else:
         return redirect(url_for("login"))
 
+
 @app.get("/books")
 def get_book():
     count = int(request.args.get("count")) if request.args.get("count") else random.randint(1, 111)
@@ -35,6 +36,7 @@ def get_book():
         return render_template("books.html", random_books=random_books), 200
     else:
         return redirect(url_for("login"))
+
 
 @app.get("/users/<int:id>")
 def get_user_id(id):
@@ -45,6 +47,7 @@ def get_user_id(id):
             abort(404, "Not found")
     else:
         return redirect(url_for("login"))
+
 
 @app.get("/books/<string:title>")
 def get_book_title(title):
@@ -60,6 +63,7 @@ def get_params():
         return render_template("parameters.html", parameters=request.args.items())
     else:
         return redirect(url_for("login"))
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
