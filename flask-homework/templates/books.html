@@ -5,8 +5,8 @@
 {% endblock %}
 {% block content %}
 <ul id="lists">
-    {% for book in random_books %}
-    <li>{{ book }}</li>
+    {% for book in books %}
+    <li>{{ book.id }} {{ book.title }} {{ book.author }} {{ book.year }} {{ book.price }}</li>
     {% endfor %}
 </ul>
 {% endblock %}
