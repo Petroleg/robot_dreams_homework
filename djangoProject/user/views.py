@@ -1,23 +1,23 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from django.core import serializers
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 
-from user.models import User
-
-
-def users(request):
-    users = User.objects.values()
-    data = list(users)
-    return JsonResponse({'data': data})
+from .forms import UserForm
+from .models import User
 
 
-def users(request):
-    users = User.objects.values()
-    data = list(users)
-    return JsonResponse(data, safe=False, status=200)
+class UserListView(ListView):
+    template_name = "user/user_list.html"
+    model = User
 
 
-def users(request):
-    qs = User.objects.all()
-    qs_json = serializers.serialize('json', qs)
-    return HttpResponse(qs_json, content_type='application/json')
+class UserDetailView(DetailView):
+    template_name = "user/user_detail.html"
+    model = User
+
+
+class UserCreateView(CreateView):
+    model = User
+    template_name = 'user/user_create.html'
+    form_class = UserForm
+    success_url = reverse_lazy('users:users-all')
