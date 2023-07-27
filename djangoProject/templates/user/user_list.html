@@ -1,0 +1,6 @@
+<h1>Users</h1>
+<ul>
+    {% for obj in object_list %}
+    <li> {{ obj.id }} {{ obj.first_name }} {{ obj.last_name }} {{ obj.age }} </li>
+    {% endfor %}
+</ul>
