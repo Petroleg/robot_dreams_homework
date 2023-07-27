@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
-from .forms import UserForm
+from .forms import CustomUserCreationForm
 from .models import User
 
 
@@ -19,5 +19,5 @@ class UserDetailView(DetailView):
 class UserCreateView(CreateView):
     model = User
     template_name = 'user/user_create.html'
-    form_class = UserForm
+    form_class = CustomUserCreationForm
     success_url = reverse_lazy('users:users-all')
