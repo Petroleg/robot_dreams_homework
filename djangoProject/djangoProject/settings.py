@@ -138,3 +138,14 @@ REST_FRAMEWORK = {
     #    'rest_framework.permissions.IsAuthenticated',
     # ]
 }
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+CELERY_BEAT_SCHEDULE = {
+    'each_minute_print': {
+        'task': 'user.tasks.each_minute_print',
+        'schedule': 10.0,
+    },
+}
