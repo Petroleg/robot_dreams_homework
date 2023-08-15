@@ -1,13 +1,13 @@
 import logging
 
 from flask import Flask
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 from flask_sqlalchemy import SQLAlchemy
 
 from config import AppConfig
 
-load_dotenv()
+load_dotenv(find_dotenv())
 
 db = SQLAlchemy()
 app = Flask(__name__)

@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  redis:
+    image: redis:5
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    command: gunicorn djangoProject.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+  nginx:
+    image: nginx:1.19.0
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - web
+
+  celery-worker:
+    build: .
+    command: celery --app djangoProject worker
+    depends_on:
+      - db
+      - web
+      - redis
+
+  celery-beat:
+    build: .
+    command: celery --app djangoProject beat
+    depends_on:
+      - db
+      - web
+      - redis
+
+volumes:
+  postgres_data:
